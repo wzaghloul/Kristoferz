@@ -3,9 +3,8 @@ row = 6
 moves = 0
 
 
-#field = [[]]
+#field = [][] wird definiert
 field = [[i * j for j in range(col)] for i in range(row)]
-#print(field[i][j])
 for i in range(row):
     for j in range(col):
         field[i][j] = 0
@@ -19,7 +18,7 @@ for i in range(row):
 # 4 . . . . . . .
 # 5 . . . . . . .
 
-def printboard ():
+def printboard ():      #Update Board  
   for n in field:
     print(' '.join([str(elem) for elem in n])) #print(field[i][j])
 
