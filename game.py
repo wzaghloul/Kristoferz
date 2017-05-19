@@ -98,6 +98,7 @@ for i in range (row * col):
       humanTurn('H')
     else:
       humanTurn('X')
+      # bis computerTurn gemacht wird
     moves += 1
   else:
     break
