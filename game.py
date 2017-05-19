@@ -1,3 +1,5 @@
+from random import randrange
+
 col = 7
 row = 6
 coli = col -1 # max. index in col
@@ -5,6 +7,7 @@ rowi = row -1 # max. index in row
 human = 0
 ans = str(input('Möchtest du anfangen? (\'j\' / \'n\')'))[0].lower()
 moves = 0
+possible = [0,0,0,0,0,0,0]
 
 #field = [zeile][spalte] wird definiert
 field = [[i * j for j in range(col)] for i in range(row)]
@@ -87,8 +90,35 @@ def humanTurn(chip):
         print('Spalte voll!')
         retry = True
 
+def listPossible():
+  for i in range(col):
+    if (field[0][i] == 0):
+      possible[i] = 1
+    else:
+      possible[i] = 0
+  ## print (possible)
+      
+def computerTurn(chip):
+  summe = 0
+  count = 0
+  for i in possible:
+    summe += i
+  cominput = randrange(0, summe - 1)
+  ## print ('Random number: ' + str(cominput))
+  for i in range(col):
+      count += possible[i]
+      if (count == cominput +1):
+        for j in range(row):
+        ## print (i)
+          if (field[rowi - j][i] == 0):
+            field[rowi - j][i] = chip
+            printboard()
+            break
+  count = 0
+
 # kann man MAIN nennen
 for i in range (row * col):
+  listPossible()
   if (not(checkforWin())):
     if (ans == 'j' or ans == 'y'):
       human = 0
@@ -97,8 +127,7 @@ for i in range (row * col):
     if (moves % 2 == human):
       humanTurn('H')
     else:
-      humanTurn('X')
-      # bis computerTurn gemacht wird
+      computerTurn('X')
     moves += 1
   else:
     break
