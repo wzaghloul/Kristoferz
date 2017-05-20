@@ -5,7 +5,7 @@ row = 6
 coli = col -1 # max. index in col
 rowi = row -1 # max. index in row
 human = 0
-ans = str(input('Möchtest du anfangen? (\'j\' / \'n\')'))[0].lower()
+ans = int(input('Möchtest du anfangen? (0 = NEIN, 1 = JA)'))
 moves = 0
 possible = [0,0,0,0,0,0,0]
 
@@ -120,10 +120,7 @@ def computerTurn(chip):
 for i in range (row * col):
   listPossible()
   if (not(checkforWin())):
-    if (ans == 'j' or ans == 'y'):
-      human = 0
-    else:
-      human = 1
+    human = ans + 1 % 2
     if (moves % 2 == human):
       humanTurn('H')
     else:
@@ -131,3 +128,5 @@ for i in range (row * col):
     moves += 1
   else:
     break
+  if (moves == 42):
+    print('Unentschieden!')
