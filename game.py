@@ -120,7 +120,7 @@ def computerTurn(chip):
 for i in range (row * col):
   listPossible()
   if (not(checkforWin())):
-    human = ans + 1 % 2
+    human = (ans + 1) % 2
     if (moves % 2 == human):
       humanTurn('H')
     else:
