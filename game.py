@@ -79,7 +79,7 @@ def humanTurn(chip):
     if (not(userInput <= row and userInput >= 0)):
       print('Ich habe gesagt zwischen 0 und 6!')
       retry = True
-    if (movePossible(userInput)):
+    elif (movePossible(userInput)):
         for i in range(row):
         ## print (i)
             if (field[rowi - i][userInput] == 0):
