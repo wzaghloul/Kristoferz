@@ -1,3 +1,5 @@
+# coding=utf-8
+
 from random import randrange
 
 col = 7
@@ -79,7 +81,7 @@ def humanTurn(chip):
     if (not(userInput <= row and userInput >= 0)):
       print('Ich habe gesagt zwischen 0 und 6!')
       retry = True
-    elif (movePossible(userInput)):
+    if (movePossible(userInput)):
         for i in range(row):
         ## print (i)
             if (field[rowi - i][userInput] == 0):
